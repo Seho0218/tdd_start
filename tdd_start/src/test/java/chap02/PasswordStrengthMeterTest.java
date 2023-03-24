@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PasswordStrengthMeterTest {
     PasswordStrengthMeter meter = new PasswordStrengthMeter();
 
-    private void assertStrength(String password, PasswordStrength expStr){
+    private void assertStrength(String password, PasswordStrength expStr) {
         PasswordStrength result = meter.meter(password);
         assertEquals(expStr, result);
     }
@@ -18,7 +18,7 @@ public class PasswordStrengthMeterTest {
     @Test
     @DisplayName("첫 번째 테스트 : 모든 규칙을 충족하는 경우")
     void meetsAllCriteria_Then_Strong() {
-        assertStrength("ab12!@AB",PasswordStrength.STRONG);
+        assertStrength("ab12!@AB", PasswordStrength.STRONG);
         assertStrength("abc1!Add", PasswordStrength.STRONG);
     }
 
@@ -31,9 +31,19 @@ public class PasswordStrengthMeterTest {
 
     @Test
     @DisplayName("세 번째 테스트 : 숫자를 포함하지 않고 나머지 조건은 충족하는 경우")
-    void meetsOtherCriteria_except_for_number_Then_Normal(){
+    void meetsOtherCriteria_except_for_number_Then_Normal() {
         assertStrength("ab!@ABqwer", PasswordStrength.NORMAL);
     }
 
+    @Test
+    @DisplayName("네 번째 테스트 : 값이 없는 경우 (null)")
+    void nullInput_Then_Invalid() {
+        assertStrength(null , PasswordStrength.INVALID);
+    }
 
+    @Test
+    @DisplayName("네 번째 테스트 : 값이 없는 경우 (empty)")
+    void empthInput_Then_Invalid() {
+        assertStrength("" , PasswordStrength.INVALID);
+    }
 }

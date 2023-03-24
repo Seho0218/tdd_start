@@ -48,7 +48,7 @@ public class PasswordStrengthMeterTest {
     }
 
     @Test
-    @DisplayName("네 번째 테스트 : 대문자를 포함하지 않고 나머지 조건을 충족하는 경우")
+    @DisplayName("다섯 번째 테스트 : 대문자를 포함하지 않고 나머지 조건을 충족하는 경우")
     void meetsOtherCriteria_except_for_Uppercase_Then_NOrmal(){
         assertStrength("ab12!@df", PasswordStrength.NORMAL);
     }

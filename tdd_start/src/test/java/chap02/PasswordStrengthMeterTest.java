@@ -58,4 +58,10 @@ public class PasswordStrengthMeterTest {
     void meetsOnlyLengthCriteria_Then_Weak(){
         assertStrength("abdefghi", PasswordStrength.WEAK);
     }
+
+    @Test
+    @DisplayName("일곱 번째 테스트: 숫자 포함 조건만 충족하는 경우")
+    void meetsOnlyNumCriteria_Then_Weak(){
+        assertStrength("12345", PasswordStrength.WEAK);
+    }
 }

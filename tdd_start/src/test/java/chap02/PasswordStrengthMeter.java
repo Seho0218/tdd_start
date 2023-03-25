@@ -6,21 +6,30 @@ public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {
         if (s == null || s.isEmpty()) return PasswordStrength.INVALID;
 
-        int metCounts = 0;
+        int metCounts = getMetCriteriCounts(s);
+
+        /*
+        *  코드 정리 : 가독성 개선
+        *
         if(s.length() >= 8) metCounts++;
         if(meetsContainingNumberCriteria(s)) metCounts++;
         if(meetsContainingUppercaseCriteria(s)) metCounts++;
+         */
 
         /*
+        *   코드 정리 : meter() 메서드 리팩토링
+        *
         boolean lengthEnough = s.length() >= 8;
         if(lengthEnough) metCounts++;
         boolean containsNum = meetsContainingNumberCriteria(s);
-        if(containsNu링m) metCounts++;
+        if(containsNum) metCounts++;
         boolean containsUpp = meetsContainingUppercaseCriteria(s);
         if(containsUpp) metCounts++;
          */
 
         /*
+        *   코드 정리 : meter() 메서드 리팩토링
+        *
         if(lengthEnough && !containsNum && !containsUpp)
             return PasswordStrength.WEAK;
         if(!lengthEnough && containsNum && !containsUpp)
@@ -41,6 +50,15 @@ public class PasswordStrengthMeter {
         */
 
         return PasswordStrength.STRONG;
+    }
+
+    private int getMetCriteriCounts(String s) {
+        int metCounts = 0;
+        if(s.length() >= 8) metCounts++;
+        if(meetsContainingNumberCriteria(s)) metCounts++;
+        if(meetsContainingUppercaseCriteria(s)) metCounts++;
+        return metCounts;
+
     }
 
     private boolean meetsContainingNumberCriteria(String s){

@@ -1,6 +1,7 @@
 package test.java.chap02;
 
 import main.chap02.PasswordStrength;
+import main.chap02.PasswordStrengthMeter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

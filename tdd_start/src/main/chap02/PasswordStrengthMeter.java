@@ -1,6 +1,4 @@
-package test.java.chap02;
-
-import main.chap02.PasswordStrength;
+package main.chap02;
 
 public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {

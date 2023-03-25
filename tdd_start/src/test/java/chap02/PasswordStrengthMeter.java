@@ -29,7 +29,7 @@ public class PasswordStrengthMeter {
             return PasswordStrength.WEAK;
          */
 
-        if (metCounts == 1) return PasswordStrength.WEAK;
+        if (metCounts <= 1) return PasswordStrength.WEAK;
         if (metCounts == 2) return PasswordStrength.NORMAL;
 
         /*

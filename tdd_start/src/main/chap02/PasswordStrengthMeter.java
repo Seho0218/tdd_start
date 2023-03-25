@@ -4,7 +4,7 @@ public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {
         if (s == null || s.isEmpty()) return PasswordStrength.INVALID;
 
-        int metCounts = getMetCriteriCounts(s);
+        int metCounts = getMetCriteriaCounts(s);
 
         /*
         *  코드 정리 : 가독성 개선
@@ -50,7 +50,7 @@ public class PasswordStrengthMeter {
         return PasswordStrength.STRONG;
     }
 
-    private int getMetCriteriCounts(String s) {
+    private int getMetCriteriaCounts(String s) {
         int metCounts = 0;
         if(s.length() >= 8) metCounts++;
         if(meetsContainingNumberCriteria(s)) metCounts++;
